@@ -1,0 +1,942 @@
+/* styles.css */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #11162c; /* Changed background color to #11162c */
+    color: #fff; /* Changed default text color to white */
+}
+.navbar {
+    background: #11162c;
+    color: #fff;
+    display: flex; /* Keep existing flex properties */
+    align-items: center; /* Keep existing align-items */
+    justify-content: center; /* Add to center content horizontally */
+    padding: 0 40px;
+    height: 60px;
+}
+
+.wrapper{
+    height: 117px;
+    width: 100%;
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 40px;
+    color: #fff;
+}
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 20px;
+    padding: 8px 18px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+.navbar a.active {
+    background: #D81E5B;
+    color: #fff;
+}
+.breadcrumb {
+    color: #fff;
+    font-size: 15px;
+    margin: 30px 40px 20px 40px;
+}
+.page-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0 40px 40px 40px;
+    color: #fff;
+}
+.classes-layout {
+    width: 100%;
+    max-width: none;
+}
+.class-row {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 48px;
+    padding: 0 40px;
+}
+.class-row.reverse {
+    flex-direction: row-reverse;
+}
+.class-img {
+    flex: 1.25;
+    border-radius: 6px 0 0 6px;
+    margin-right: 32px;
+    margin-left: 0;
+    min-width: 320px;
+    min-height: 180px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #0002;
+}
+.class-row.reverse .class-img {
+    margin-left: 32px;
+    margin-right: 0;
+    border-radius: 0 6px 6px 0;
+}
+.class-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+.class-title {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.class-desc {
+    font-size: 15px;
+    margin-bottom: 18px;
+    color: #ddd;
+}
+.class-actions {
+    display: flex;
+    gap: 12px;
+}
+.class-actions a {
+    background: #D81E5B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 9px 18px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    width: fit-content;
+}
+.class-actions a:hover {
+    background: #11162c;
+}
+.enroll-form-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.enroll-form {
+    background: #fff;
+    padding: 32px 28px;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px #0002;
+    min-width: 340px;
+    color: #222;
+}
+.enroll-form h2 {
+    margin-top: 0;
+    color: #222;
+}
+.enroll-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #222;
+}
+.enroll-form input {
+    width: 100%;
+    padding: 9px;
+    margin-bottom: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    color: #222;
+}
+.enroll-form button {
+    background: #D81E5B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 9px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.enroll-form button:hover {
+    background: #11162c;
+}
+@media (max-width: 900px) {
+    .class-row, .class-row.reverse {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    .class-img, .class-row.reverse .class-img {
+        margin: 0 0 18px 0 !important;
+        min-width: unset;
+        min-height: 160px;
+        border-radius: 6px !important;
+    }
+    .breadcrumb, .page-title {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+
+.navbar { /* Overriding the previous navbar styles */
+    background: #160052; /* Keeping this as it was */
+    color: #fff;
+    display: flex; /* Ensuring flex is still there */
+    justify-content: center; /* Added to center the content */
+    align-items: center; /* Ensuring vertical alignment */
+    padding: 15px 20px; /* Adjusting padding */
+    height: auto; /* Adjusting height */
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 20px; /* Adjusting margin */
+    color: #fff;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 10px; /* Adjusting margin */
+    border-radius: 5px;
+}
+
+.navbar a.active {
+    background: #D81E5B;
+}
+
+.main-content {
+    padding: 50px 30px 80px 30px;
+    min-height: 80vh;
+    background: #11162c; /* Keeping this */
+    color: #fff; /* Keeping this */
+}
+
+.footer {
+    background: #160052;
+    color: #fff;
+    text-align: center;
+    padding: 18px 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Additional styles for session.php */
+
+.main-content { /* Ensuring this also has the dark background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #11162c;
+    color: #fff;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    margin-bottom: 20px;
+    width: 100%;
+    color: #fff;
+}
+
+.session-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 30px 0 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.session-desc {
+    max-width: 400px;
+    margin: 0 auto 30px auto;
+    font-size: 15px;
+    text-align: center;
+    color: #ddd;
+}
+
+.book-btn {
+    background:#D81E5B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.book-btn:hover {
+    background: #D81E5B;
+}
+
+
+
+/*
+    homepage
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color:  #11162C;
+    color: #000;
+    line-height: 1.6;
+}
+
+/* HEADER & NAVBAR */
+.wrapper{
+    height: 117px;
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #11162c;
+    color: white;
+}
+
+.upperNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.upperNav img {
+    height: 40px;
+}
+
+.upperNav div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upperNav span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.upperNav button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #D81E5B;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.upperNav button:hover {
+    background-color: #fff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.profileUpperNav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.profileUpperNav:hover {
+    text-decoration: underline;
+    color: #D81E5B;
+    transition: all 0.3s ease;
+}
+
+.profileUpperNav img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+nav {
+    background-color: #160052;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li{
+    width: 200px;
+    text-align: center;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0px 5px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+    background-color: #D81E5B;
+    transition: all 0.4s ease;
+}
+
+nav ul li a.active {
+    background-color: #D81E5B;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .upperNav nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    nav li{
+        width:100%;
+    }
+    nav ul{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wrapper{
+        height: 254px;
+    }
+}
+
+/* BREADCRUMBS */
+.breadcrumbs {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #000;
+}
+
+.breadcrumbs a {
+    color: #000;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+    color: #DC6C06;
+}
+
+.breadcrumbs span {
+    color: #aaa;
+}
+
+
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px;
+    background-color: #160052;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    width: 100vw;
+}
+
+footer a.logo img {
+    display: block;
+    height: 50px;
+    width:auto;
+}
+
+footer a.logo {
+    display: inline-block;
+    background-color: #11162C;
+    padding: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 15px;
+}
+footer p {
+    max-width: 300px;
+    line-height: 1.6;
+    font-size: 14px;
+    color: #ccc;
+}
+
+footer span {
+    color: #D81E5B;
+    font-weight: bold;
+}
+
+footer h4 {
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: #fff;
+}
+
+.leftFooter{
+    width:50%;
+}
+
+.footerDescrip{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.middleFooter{
+    width:30%
+}
+
+.middleFooter a:hover{
+    text-decoration: underline;
+    color: #D81E5B;
+    transition: all 0.4s ease;
+}
+
+.rightFooter {
+    width:20%
+}
+
+
+/* CYRA | SIGNIN, SIGN UP, HOMEPAGE, MEMBERSHIP, PROFILE */
+
+
+/* HOMEPAGE & MEMBERSHIP */
+.headerImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;     /* vertical centering */
+    color: #fff;
+
+    background-image: url(images/homePlaceholder.png);
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+    background-color: #11162C;
+    padding: 2rem;
+    
+    width: 100%;
+    height: 475px;
+}
+
+.headerImg p{
+    padding-right: 30px;
+    max-width: 1000px;
+}
+
+.mainCont {
+    max-width:1200px;
+    margin: auto;
+    padding: 2rem;
+    text-align: center;
+    background-color: #11162C;
+    color: #fff;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.cardClassCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    height: 450px;
+    background-color: #11162C;
+}
+
+.cardClass {
+    background-color: #f5f5f5;
+    color: #000;
+    border-radius: 12px;
+    padding: 1rem;
+    height: 380px;
+    width: 280px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(217, 217, 217, 0.1);
+}
+
+.cardMembers{
+    height: 450px;
+}
+
+.cardMembers hr{
+    color: #696969;
+    margin: 1rem 0;
+}
+
+.cardMembersDetails{
+    height:248px;
+}
+.cardClassImg {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.cardClassTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.cardClassDetails {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.cardPerks {
+    margin-left: 4rem;
+}
+
+.enrollBtn {
+    background-color: #D81E5B;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.enrollBtn:hover {
+    background-color: #fff;
+    color: #D81E5B;
+    font-weight: bold;
+    border: 2px solid #D81E5B;
+    transition: all 0.3s ease;
+}
+
+.planSkip{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+.moreLink {
+    margin-top: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.moreLink:hover {
+    text-decoration: underline;
+    color: #D81E5B;
+    transition: all 0.4s ease;
+}
+
+.quote {
+    margin: 2rem 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #000;
+    background-color: #fff;
+    background-image: url(images/quote.png);
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    height:200px;
+    width: 100%;
+}
+
+.quoteText {
+    padding: 5rem;
+    justify-content: center;
+}
+
+.cardManageCont {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem;
+    flex-wrap: wrap;
+}
+
+.cardManage {
+    background-color: #1e293b;
+    color: #f8fafc;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    gap: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cardManageImg{
+    background-color: #fff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.cardManageInfo {
+    flex-grow: 1;
+}
+
+.cardManageInfo p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    
+}
+
+.infoBtn {
+    background-color: #D81E5B;
+    color: white;
+    border: none;
+    margin:20px;;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: block;
+    margin: 0 auto;
+    width:80px;
+    text-decoration: none;
+    height:32px;
+}
+
+.infoBtn:hover {
+    background-color: #fff;
+    color: #D81E5B;
+    font-weight: bold;
+    border: 2px solid #D81E5B;
+    transition: all 0.4s ease;
+}
+
+@media screen and (max-width: 938px) {
+    .headerImg {
+        min-height: 200px;
+    }
+    
+    .cardClassCont {
+        padding: 1rem 0;
+        height:1000px;
+        gap: 0.5;
+    }
+
+    .moreLink{
+        display: block;
+        width:100%;
+        padding-bottom: 20px;
+    }
+    
+    .square, .circle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .infoBtn {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .title {
+        padding-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cardClassCont {
+        height:1200px;
+    }
+    .cardManage {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+    
+    .cardManageImg {
+        margin-bottom: 1rem;
+    }
+    
+    .cardManageInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+   
+
+}
+
+/* PROFILE */
+.light {
+    background-color: #fff;
+    color: #000;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.profileCont {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.light h2, h3{
+    margin-bottom: 15px;
+}
+
+.accBoxCont{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+
+}
+
+.profilePic {
+    width: 150px;
+    height: 150px;
+    background-color: #1e293b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.accBoxDetails {
+    height: 150px;
+    flex-grow: 1;
+    background-color: #1e293b;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+  
+.editCont {
+    margin-top: 10px;;
+}
+
+.editCont a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+
+}
+
+.currentPlan {
+    flex-grow:2;
+}
+
+.membershipStatus {
+    flex-grow:1;
+}
+
+.extraFuncCont{
+    height:62px;
+    /* display: flex;
+    gap: 20px;
+    flex-wrap: wrap; */
+}
+
+.currentPlan, .membershipStatus, .managePlan, .managePayment{
+    background-color: #1e293b;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.managePlan, .managePayment{
+    width:50%;
+}
+
+.manageBtn{
+    width: 167px;
+    font-size: 13px;
+    height:32px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #D81E5B;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.manageBtn:hover {
+    background-color: #fff;
+    color: #D81E5B;
+    font-weight: bold;
+    border: 2px solid #D81E5B;
+    transition: all 0.4s ease;
+}
