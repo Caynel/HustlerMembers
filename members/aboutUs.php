@@ -131,17 +131,28 @@
                 </div>
             </section>
 
-            <section class="join">
-                <h2>Join Us</h2>
-                <p class="joinText">
-                    Push limits, break barriers, and transform your fitness journey
-                    with us. No matter your level, we’ve got the energy, 
-                    equipment, and support to fuel your success.
+            <?php if (isLoggedIn()): ?>
+                <section class="join">
+                    <h2>Welcome to the HustleCore family!</h2>
+                    <p class="joinText">
+                        Push your limits, break barriers, and transform your fitness journey with us.
+                        No matter your level, we've got the energy, equipment, and unwavering support to fuel your success. 
+                        Let's hustle, together!
+                    </p>
+                </section>
+            <?php else: ?>
+                <section class="join">
+                    <h2>Join Us</h2>
+                    <p class="joinText">
+                        Push limits, break barriers, and transform your fitness journey
+                        with us. No matter your level, we’ve got the energy, 
+                        equipment, and support to fuel your success.
 
-                    Ready to hustle? Join HustleCore today!
-                </p>
-                <a class="aboutBtn" href="SignUp.php">&rarr;</a>
-            </section>
+                        Ready to hustle? Join HustleCore today!
+                    </p>
+                    <a class="aboutBtn" href="SignUp.php">&rarr;</a>
+                </section>
+            <?php endif; ?>
         </main>
         <footer>
             <div class="leftFooter">
