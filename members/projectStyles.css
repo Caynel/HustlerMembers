@@ -1,0 +1,1478 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color:  #11162C;
+    color: #000;
+    line-height: 1.6;
+}
+
+/* HEADER & NAVBAR */
+.wrapper{
+    height: 117px;
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #11162c;
+    color: white;
+}
+
+.upperNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.upperNav img {
+    height: 40px;
+}
+
+.upperNav div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.upperNav span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.signBtns {
+    text-decoration: none;
+}
+
+.signBtns:hover{
+    background-color: #fff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.upperNav button, .signBtns {
+    padding: 5px 10px;
+    border: none;
+    background-color: #D81E5B;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.upperNav button:hover {
+    background-color: #fff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.profileUpperNav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+.profileUpperNav:hover {
+    text-decoration: underline;
+    color: #D81E5B;
+    transition: all 0.3s ease;
+}
+
+.profileUpperNav img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+nav {
+    background-color: #160052;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li{
+    width: 200px;
+    text-align: center;
+}
+
+nav ul li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0px 5px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+    background-color: #D81E5B;
+    transition: all 0.4s ease;
+}
+
+nav ul li a.active {
+    background-color: #D81E5B;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .upperNav nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    nav li{
+        width:100%;
+    }
+    nav ul{
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .wrapper{
+        height: 254px;
+    }
+}
+
+/* BREADCRUMBS */
+.breadcrumbs {
+    padding: 10px 20px;
+    font-size: 14px;
+    color: #000;
+}
+
+.breadcrumbs a {
+    color: #000;
+    text-decoration: none;
+}
+
+.breadcrumbs a:hover {
+    text-decoration: underline;
+    color: #DC6C06;
+}
+
+.breadcrumbs span {
+    color: #aaa;
+}
+
+
+/* FOOTER */
+footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 40px;
+    background-color: #160052;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+footer a.logo img {
+    display: block;
+    height: 50px;
+    width: auto;
+}
+
+footer a.logo {
+    display: inline-block;
+    background-color: #11162C;
+    padding: 8px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+footer p {
+    max-width: 250px;
+    line-height: 1.6;
+    font-size: 14px;
+    color: #ccc;
+}
+
+footer span {
+    color: #D81E5B;
+    font-weight: bold;
+}
+
+footer h4 {
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+    color: #fff;
+}
+
+.leftFooter {
+    width: 50%;
+    padding-right: 15px;
+}
+
+.footerDescrip {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.middleFooter {
+    width: 30%;
+    padding-left: 15px;
+}
+
+.middleFooter a:hover {
+    text-decoration: underline;
+    color: #D81E5B;
+    transition: all 0.4s ease;
+}
+
+.rightFooter {
+    width: 20%;
+}
+
+/* MEDIA QUERIES */
+
+/* Small screens (mobile) */
+@media (max-width: 767px) {
+    footer {
+        padding: 20px;
+    }
+
+    .leftFooter, .middleFooter, .rightFooter {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footerDescrip {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    footer p {
+        max-width: none;
+        font-size: 12px;
+    }
+
+    footer .copyright {
+        font-size: 12px;
+    }
+
+    .middleFooter ul, .rightFooter ul {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    footer h4 {
+        font-size: 16px;
+    }
+}
+
+/* MEDIUMM TO SMALL-ISH SCREENS*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    footer {
+        padding: 30px;
+    }
+
+    .leftFooter, .middleFooter, .rightFooter {
+        width: 33.33%;
+    }
+
+    .footerDescrip {
+        gap: 10px;
+    }
+
+    footer p {
+        font-size: 13px;
+    }
+
+    footer .copyright {
+        font-size: 14px;
+    }
+}
+
+/* FOR BIGGER SCREENS */
+@media (min-width: 1025px) {
+    footer {
+        padding: 40px;
+    }
+
+    .leftFooter, .middleFooter, .rightFooter {
+        width: 33.33%;
+    }
+}
+
+
+/* CYRA | SIGNIN, SIGN UP, HOMEPAGE, MEMBERSHIP, PROFILE */
+/* SIGN IN & SIGN UP */
+.signBody{
+    height: 100%;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.signContainer{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.signIncontainer {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    min-height: 100vh;
+}
+
+.rightSignCont {
+    width: 35%;
+    background-color: #11162c;
+    padding: 40px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    min-height: 100vh;
+}
+
+.leftSignCont {
+    width: 65%;
+    background-image: url(images/signInHustleCore.png);
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+}
+
+.rightSignCont form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; 
+    width: 100%; 
+    max-width: 350px;
+}
+
+.rightSignCont h2{
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+}
+
+.rightSignCont form label{
+    font-weight: bold;
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.rightSignCont  input[type="email"],
+                input[type="password"],
+                input[type="text"] {
+                    width: 100%;
+                    padding: 14px;
+                    margin-bottom: 10px;
+                    background-color: #6C757D;
+                    border: none;
+                    border-radius: 5px;
+                    color: #fff;
+}
+
+.rightSignCont  input::placeholder {
+    color: #fff;
+    opacity: 0.5; 
+}
+
+.rightSignCont button {
+    width: 100%;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #007BFF;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.rightSignCont button:hover {
+    background-color: #DC6C06;
+}
+
+.signExtraText {
+    color: #fff;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.signExtraLink{
+    color: #fff;
+    text-decoration: none;
+}
+
+.signExtraLink:hover {
+    text-decoration: underline;
+    color: #DC6C06;
+}
+
+.forgotPass {
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    width: 100%;
+}
+
+.forgotPass a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.forgotPass a:hover {
+    text-decoration: underline;
+    color: #DC6C06;
+}
+
+ /* Bigger Screen Sizes */
+@media (min-width: 1440px) {
+    .rightSignCont {
+        padding: 80px 60px;
+        
+    }
+
+    form {
+        max-width: 400px; /*SIGNIN*/
+    }
+}
+
+/* Smaller screen sizes */
+@media (max-width: 768px) {
+    .signContainer {
+        flex-direction: column;
+    }
+                
+    .leftSignCont {
+        display: none;
+    }
+                
+    .rightSignCont {
+        width: 100%;
+        padding: 30px 20px;
+    }
+                
+    .rightSignCont form {
+        margin-bottom: 40px;
+    }
+                
+    .rightSignCont button {
+        margin-bottom: 20px;
+    }
+}
+
+/* HOMEPAGE & MEMBERSHIP */
+.headerImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;     
+    color: #fff;
+
+    background-image: url(images/homePlaceholder.png);
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+    background-color: #11162C;
+    padding: 2rem;
+    
+    width: 100%;
+    height: 475px;
+}
+
+.headerImg p{
+    padding-right: 30px;
+    max-width: 1000px;
+}
+
+.mainCont {
+    max-width:1200px;
+    margin: auto;
+    padding: 2rem;
+    text-align: center;
+    background-color: #11162C;
+    color: #fff;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+}
+
+.cardClassCont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    height: 450px;
+    background-color: #11162C;
+}
+
+.aboutCard{
+    height:350px
+} 
+
+.cardClass{
+    height: 380px;
+}
+
+.cardClass, .aboutCard {
+    background-color: #f5f5f5;
+    color: #000;
+    border-radius: 12px;
+    padding: 1rem;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(217, 217, 217, 0.1);
+}
+
+.cardClassDetails{
+    text-align: left;
+}
+
+.cardMembers{
+    height: 450px;
+}
+
+.cardMembers hr{
+    color: #696969;
+    margin: 1rem 0;
+}
+
+.cardMembersDetails {
+    height:248px;
+}
+
+.cardClassImg {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.cardClassTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.aboutCrewName{
+    color: #000;
+}
+
+.cardClassDetails {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.cardPerks {
+    margin-left: 4rem;
+}
+
+.enrollBtn {
+    background-color: #D81E5B;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    text-align: left;
+    text-decoration: none;
+}
+
+
+
+.enrollBtn:hover {
+    background-color: #fff;
+    color: #D81E5B;
+    font-weight: bold;
+    border: 2px solid #D81E5B;
+    transition: all 0.3s ease;
+}
+
+.planSkip{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+.moreLink {
+    margin-top: 2rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.moreLink:hover {
+    text-decoration: underline;
+    color: #D81E5B;
+    transition: all 0.4s ease;
+}
+
+.quote, .aboutdescrip{
+    margin: 2rem 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #000;
+    background-color: #fff;
+    background-image: url(images/quote.png);
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    height:200px;
+    width: 100%;
+}
+
+.quoteText, .aboutText {
+    padding: 5rem;
+    justify-content: center;
+}
+
+.cardManageCont, .teamCont {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem;
+    flex-wrap: wrap;
+}
+
+.cardManage, .teamCard {
+    background-color: #1e293b;
+    color: #f8fafc;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    width: 300px;
+    gap: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cardClass .aboutCrew{
+    text-align: center;
+}
+
+.cardManageImg{
+    background-color: #fff;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.aboutCrew {
+    border-radius: 50%;
+    width: 150px; 
+    height: 150px;
+    object-fit: cover; 
+    margin-top: 20px;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
+.cardManageInfo {
+    flex-grow: 1;
+}
+
+.cardManageInfo p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    
+}
+
+.infoBtn {
+    background-color: #D81E5B;
+    color: white;
+    border: none;
+    margin:20px;;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: block;
+    margin: 0 auto;
+    width:80px;
+    text-decoration: none;
+    height:32px;
+}
+
+.infoBtn:hover {
+    background-color: #fff;
+    color: #D81E5B;
+    font-weight: bold;
+    border: 2px solid #D81E5B;
+    transition: all 0.4s ease;
+}
+
+@media screen and (max-width: 938px) {
+    .headerImg {
+        min-height: 200px;
+    }
+    
+    .cardClassCont {
+        padding: 1rem 0;
+        height:1000px;
+        gap: 0.5;
+    }
+
+    .moreLink{
+        display: block;
+        width:100%;
+        padding-bottom: 20px;
+    }
+    
+    .square, .circle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .infoBtn {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .title {
+        padding-top: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .cardClassCont {
+        height:1200px;
+    }
+    .cardManage {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem 1rem;
+    }
+    
+    .cardManageImg {
+        margin-bottom: 1rem;
+    }
+    
+    .cardManageInfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+   
+
+}
+
+/* ABOUT */
+.aboutUs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.aboutUs article {
+    flex: 1; /* Allow article to take 3 times the space of aside */
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.aboutUs aside {
+    flex: 1; /* Allow aside to take less space compared to article */
+}
+
+.aboutUs aside img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.join {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;     
+
+    background-image: url(images/homePlaceholder.png);
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+    background-color: #D81E5B;
+    padding: 2rem;
+    
+    width: 100%;
+    height: 200px;
+    margin: 30px 0 30px;
+}
+
+.aboutBtn{
+    width: 80px;
+    font-size: 13px;
+    height:32px;
+    padding-top: 3px;
+    text-decoration: none;
+    border: none;
+    background-color: #D81E5B;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    margin: auto;
+}
+
+.aboutBtn:hover {
+    padding-top: 2px;
+    background-color: #fff;
+    color: #D81E5B;
+    font-weight: bold;
+    border: 2px solid #D81E5B;
+    transition: all 0.4s ease;
+}
+
+.aboutDescrip{
+    background-image: url(images/aboutPic.jpg);
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    height:260px;
+    width: 100%;
+    padding: 50px;
+    margin: 30px 0 ;
+    text-align: center;
+    color: #ffffff;
+}
+
+.aboutDescrip p{
+    text-align: center;
+    margin: auto;
+    max-width: 800px;
+    flex-wrap: wrap;
+}
+
+.joinText{
+    max-width: 800px;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 640px) {
+    .aboutDescrip{
+        height:350px;
+    }
+
+    .join{
+        height:350px
+    }
+}
+
+
+/* PROFILE */
+.light {
+    background-color: #fff;
+    color: #000;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.profileCont {
+    max-width: 800px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.light h2, h3{
+    margin-bottom: 15px;
+}
+
+.accBoxCont{
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+
+}
+
+.profilePic {
+    width: 150px;
+    height: 150px;
+    background-color: #1e293b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+.accBoxDetails {
+    height: 150px;
+    flex-grow: 1;
+    background-color: #1e293b;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+}
+  
+.editCont {
+    margin-top: 10px;;
+}
+
+.editCont a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+
+}
+
+.currentPlan {
+    flex-grow:2;
+}
+
+.membershipStatus {
+    flex-grow:1;
+}
+
+.extraFuncCont{
+    height:62px;
+    /* display: flex;
+    gap: 20px;
+    flex-wrap: wrap; */
+}
+
+.currentPlan, .membershipStatus, .managePlan, .managePayment{
+    background-color: #1e293b;
+    color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.managePlan, .managePayment{
+    width:50%;
+}
+
+.manageBtn{
+    width: 167px;
+    font-size: 13px;
+    height:32px;
+    padding: 8px 12px;
+    border: none;
+    background-color: #D81E5B;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.manageBtn:hover {
+    background-color: #fff;
+    color: #D81E5B;
+    font-weight: bold;
+    border: 2px solid #D81E5B;
+    transition: all 0.4s ease;
+}
+
+
+
+/* CHAVA | Enrolled */
+/* ENROLLED */
+.enrollCont{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 0 80px 0;
+    min-height: 80vh;
+    background: #f3f3f3;
+}
+
+.enrolled-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 8px;
+    margin-left: 24px;
+}
+
+.enrolled-subtitle {
+    color: #444;
+    margin-bottom: 30px;
+    margin-left: 24px;
+}
+
+.enrolled-card {
+    background: none;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
+.enrolled-image {
+    width: 100%;
+    min-height: 110px;
+    background: #e8ecef;
+    color: #888;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25em;
+    border-radius: 8px;
+    margin-bottom: 18px;
+}
+
+.enrolled-class-info {
+    margin-bottom: 14px;
+}
+
+.enrolled-class-info .class-title {
+    font-size: 1.35em;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.enrolled-class-info .class-meta {
+    font-size: 1em;
+    margin-bottom: 2px;
+}
+
+.enrolled-class-info .class-meta strong {
+    color: #333;
+}
+
+.enrolled-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.enrolled-actions button {
+    width: 100%;
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 0;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.enrolled-actions button:hover {
+    background: #125ea7;
+}
+
+.enrolled-actions .cancel-btn {
+    background: #1565c0;
+}
+
+.enrolled-actions .cancel-btn:hover {
+    background: #0d47a1;
+}
+
+.enrolled-details {
+    background: #f7f7fa;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 10px;
+    color: #333;
+    display: none;
+}
+
+.enrollment-history-title {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: 38px 0 10px 24px;
+}
+
+.enrollment-history-table {
+    width: calc(100% - 48px);
+    margin-left: 24px;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px #0001;
+}
+
+.enrollment-history-table th, .enrollment-history-table td {
+    padding: 12px 16px;
+    text-align: left;
+}
+
+.enrollment-history-table th {
+    background: #e8ecef;
+    color: #333;
+    font-weight: 600;
+}
+
+.enrollment-history-table tr:not(:last-child) td {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.enrollment-history-table td.status-attended {
+    color: #388e3c;
+    font-weight: bold;
+}
+
+.enrollment-history-table td.status-not {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+    .enrollCont { padding: 20px 0 80px 0; }
+    .enrolled-card, .enrollment-history-title, .enrollment-history-table { margin-left: 6px; margin-right: 6px; }
+}
+
+/* CLASSES */
+.enroll-form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.enroll-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.enroll-form button[type="submit"] {
+    background-color: #D81E5B;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.enroll-form button[type="submit"]:hover {
+    background-color: #D81E5B;
+}
+
+.enroll-form button[type="button"] {
+    background-color: #aaa;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-left: 10px;
+}
+
+.enroll-form button[type="button"]:hover {
+    background-color: #888;
+}
+
+.page-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0 40px 40px 40px;
+    color: #fff;
+}
+.classes-layout {
+    width: 100%;
+    max-width: none;
+}
+.class-row {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 48px;
+    padding: 0 40px;
+}
+.class-row.reverse {
+    flex-direction: row-reverse;
+}
+.class-img {
+    flex: 1.25;
+    border-radius: 6px 0 0 6px;
+    margin-right: 32px;
+    margin-left: 0;
+    min-width: 320px;
+    min-height: 180px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px #0002;
+}
+.class-row.reverse .class-img {
+    margin-left: 32px;
+    margin-right: 0;
+    border-radius: 0 6px 6px 0;
+}
+.class-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+.class-title {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.class-desc {
+    font-size: 15px;
+    margin-bottom: 18px;
+    color: #ddd;
+}
+.class-actions {
+    display: flex;
+    gap: 12px;
+}
+.class-actions a {
+    background: #D81E5B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 9px 18px;
+    font-size: 15px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    width: fit-content;
+}
+.class-actions a:hover {
+    background-color: #fff;
+    color: #D81E5B;
+}
+.enroll-form-bg {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+.enroll-form {
+    background: #fff;
+    padding: 32px 28px;
+    border-radius: 10px;
+    box-shadow: 0 4px 24px #0002;
+    min-width: 340px;
+    color: #222;
+}
+.enroll-form h2 {
+    margin-top: 0;
+    color: #222;
+}
+.enroll-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #222;
+}
+.enroll-form input {
+    width: 100%;
+    padding: 9px;
+    margin-bottom: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    color: #222;
+}
+.enroll-form button {
+    background: #D81E5B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 9px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.enroll-form button:hover {
+    background: #11162c;
+}
+@media (max-width: 900px) {
+    .class-row, .class-row.reverse {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    .class-img, .class-row.reverse .class-img {
+        margin: 0 0 18px 0 !important;
+        min-width: unset;
+        min-height: 160px;
+        border-radius: 6px !important;
+    }
+    .breadcrumb, .page-title {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+
+.navbar { /* Overriding the previous navbar styles */
+    background: #160052; /* Keeping this as it was */
+    color: #fff;
+    display: flex; /* Ensuring flex is still there */
+    justify-content: center; /* Added to center the content */
+    align-items: center; /* Ensuring vertical alignment */
+    padding: 15px 20px; /* Adjusting padding */
+    height: auto; /* Adjusting height */
+}
+
+.navbar .logo {
+    font-weight: bold;
+    font-size: 20px;
+    margin-right: 20px; /* Adjusting margin */
+    color: #fff;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    margin: 0 10px; /* Adjusting margin */
+    border-radius: 5px;
+}
+
+.navbar a.active {
+    background: #D81E5B;
+}
+
+.main-content {
+    padding: 50px 30px 80px 30px;
+    min-height: 80vh;
+    background: #11162c; /* Keeping this */
+    color: #fff; /* Keeping this */
+}
+
+.footer {
+    background: #160052;
+    color: #fff;
+    text-align: center;
+    padding: 18px 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Additional styles for session.php */
+
+.main-content { /* Ensuring this also has the dark background */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #11162c;
+    color: #fff;
+}
+
+.breadcrumb {
+    font-size: 14px;
+    margin-bottom: 20px;
+    width: 100%;
+    color: #fff;
+}
+
+.session-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 30px 0 20px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.session-desc {
+    max-width: 400px;
+    margin: 0 auto 30px auto;
+    font-size: 15px;
+    text-align: center;
+    color: #ddd;
+}
+
+.book-btn {
+    background:#D81E5B;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.book-btn:hover {
+    background: #D81E5B;
+}
