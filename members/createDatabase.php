@@ -11,19 +11,13 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// DEBUGGING: $DROP = "DROP DATABASE IF EXISTS gym_db";
-// if ($conn->query($DROP) === TRUE) {
-//     echo "Database 'gym_db' dropped successfully!";
-// } else {
-//     echo "Error dropping database: " . $conn->error;
-// }
 
 //Create database
-$dbName = "gym_db";
+$dbName = "HustleCoreDB";
 $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Database '$dbName' created successfully!";
+    echo "<script>Database '$dbName' created successfully!</script>";
 } else {
     echo "Error creating database: " . $conn->error;
 }

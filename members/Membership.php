@@ -10,19 +10,124 @@
     
     // Get member data if needed
     $memberData = getMemberData();
+
+    // Better debug info
+    $debugMessages = [];
+
+    // Handle membership selection
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['membershipType'])) {
+        $selectedType = $_POST['membershipType'];
+        $userEmail = isset($_SESSION['memberEmail']) ? $_SESSION['memberEmail'] : null;
+        
+        // Add debug info
+        $debugMessages[] = "Selected membership: $selectedType";
+        $debugMessages[] = "User email from session: " . ($userEmail ?: "Not found");
+        $debugMessages[] = "Session data: " . print_r($_SESSION, true);
+
+        if (!empty($userEmail)) {
+            // Use global $conn if needed
+            global $conn;
+
+            // Check if connection is valid
+            if (!$conn) {
+                $debugMessages[] = "Database connection failed: " . mysqli_connect_error();
+            } else {
+                // Check if the user exists
+                $checkUser = $conn->prepare("SELECT memberID FROM Members WHERE email = ?");
+                $checkUser->bind_param("s", $userEmail);
+                $checkUser->execute();
+                $checkUser->store_result();
+                
+                if ($checkUser->num_rows > 0) {
+                    $debugMessages[] = "User found in database";
+                    $checkUser->close();
+                    
+                    // Only proceed with valid membership types
+                    if (in_array($selectedType, ['Monthly', 'Quarterly', 'Annual'])) {
+                        $stmt = $conn->prepare("UPDATE Members SET membershipType = ? WHERE email = ?");
+                        $stmt->bind_param("ss", $selectedType, $userEmail);
+                        $result = $stmt->execute();
+                        
+                        if ($result) {
+                            $debugMessages[] = "Query executed successfully";
+                            
+                            if ($stmt->affected_rows > 0) {
+                                $debugMessages[] = "Update successful, rows affected: " . $stmt->affected_rows;
+                                $stmt->close();
+                                header("Location: Homepage.php");
+                                exit();
+                            } else {
+                                $debugMessages[] = "No rows updated. Error: " . $conn->error;
+                            }
+                        } else {
+                            $debugMessages[] = "Query failed: " . $conn->error;
+                        }
+                        $stmt->close();
+                    } else if ($selectedType === 'None') {
+                        // Handle "None" membership type by setting to NULL in database
+                        $stmt = $conn->prepare("UPDATE Members SET membershipType = NULL WHERE email = ?");
+                        $stmt->bind_param("s", $userEmail);
+                        $result = $stmt->execute();
+                        
+                        if ($result) {
+                            $debugMessages[] = "Query executed successfully for 'None' membership";
+                            
+                            if ($stmt->affected_rows > 0) {
+                                $debugMessages[] = "Update to NULL successful, rows affected: " . $stmt->affected_rows;
+                                $stmt->close();
+                                
+                                // Determine where to redirect based on the referring page
+                                $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+                                if (strpos($referer, 'Profile.php') !== false) {
+                                    header("Location: Profile.php");
+                                } else {
+                                    header("Location: Homepage.php");
+                                }
+                                exit();
+                            } else {
+                                $debugMessages[] = "No rows updated for 'None'. Error: " . $conn->error;
+                            }
+                        } else {
+                            $debugMessages[] = "Query failed for 'None': " . $conn->error;
+                        }
+                        $stmt->close();
+                    } else {
+                        $debugMessages[] = "Invalid membership type: $selectedType";
+                    }
+                } else {
+                    $debugMessages[] = "User with email $userEmail not found in database";
+                }
+            }
+        } else {
+            $debugMessages[] = "No user email found in session";
+        }
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title></title>
+        <title>Membership Selection - HustleCore</title>
 
         <!-- FOR EXTERNAL CSS -->
          <link rel="stylesheet" href="projectStyles.css"> 
         
     </head>
     <body>
+        <!-- Debug Information (only visible during development) -->
+        <?php if (!empty($debugMessages)): ?>
+            <div style="background-color: #f8d7da; color: #721c24; padding: 10px; margin: 10px; border: 1px solid #f5c6cb;">
+                <h3>Debug Information:</h3>
+                <ul>
+                    <?php foreach ($debugMessages as $message): ?>
+                        <li><?php echo htmlspecialchars($message); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+        
         <header>
             <div class="upperNav">
                 <a class="logo" href="Homepage.php"><img src="images/logo.jpg" alt="Logo" /></a>
@@ -88,7 +193,10 @@
                                 </ul>
                             </li>
                         </ul>       
-                        <button class="enrollBtn">Apply Now →</button>
+                        <form method="post">
+                            <input type="hidden" name="membershipType" value="Monthly">
+                            <button class="enrollBtn" type="submit">Apply Now &rarr;</button>
+                        </form>
                     </div>
                 </div>
 
@@ -112,7 +220,10 @@
                                 </ul>
                             </li>
                         </ul>
-                        <button class="enrollBtn">Apply Now →</button>
+                        <form method="post">
+                            <input type="hidden" name="membershipType" value="Quarterly">
+                            <button class="enrollBtn" type="submit">Apply Now &rarr;</button>
+                        </form>
                     </div>
                 </div>
 
@@ -131,13 +242,19 @@
                                 </ul>
                             </li>
                         </ul>
-                        <button class="enrollBtn">Apply Now →</button>
+                        <form method="post">
+                            <input type="hidden" name="membershipType" value="Annual">
+                            <button class="enrollBtn" type="submit">Apply Now &rarr;</button>
+                        </form>
                     </div>
                 </div>
             </section>
         </main>
         <div class="planSkip">
-            <a class="moreLink" href="Homepage.php">Skip for now ➡️</a>
+            <form method="post">
+                <input type="hidden" name="membershipType" value="None">
+                <button class="moreLink" type="submit">Skip for now &rarr;</button>
+            </form>
         </div>
         <footer>
             <div class="leftFooter">
@@ -174,7 +291,6 @@
                     <li>hustlecoreAdmin@gmail.com</li>
                 </ul>
             </div>
-
         </footer>
     </body>
 </html>

@@ -4,33 +4,42 @@ include 'dbConnect.php';
 
 
 if ($conn) {
-    // Create Members tables if not exists 
+
+    // Create Memberships table 
+    $sqlCreateMembershipsTable = "CREATE TABLE IF NOT EXISTS Memberships (
+        membershipID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        membershipType ENUM('None', 'Monthly', 'Quarterly', 'Annual') NOT NULL UNIQUE
+    )";
+    if ($conn->query($sqlCreateMembershipsTable) === FALSE) {
+        echo "<script>Error creating Memberships table: " . $conn->error . "\n</script>";
+    }   else{
+        echo "<script>Memberships table created successfully.</script>";
+    }
+
+    // Insert default types if table is empty
+    $result = $conn->query("SELECT COUNT(*) AS total FROM Memberships");
+    $row = $result->fetch_assoc();
+    if ($row['total'] == 0) {
+        $conn->query("INSERT INTO Memberships (membershipType) VALUES 
+            ('None'), ('Monthly'), ('Quarterly'), ('Annual')");
+    }
+    // Create Members table with membershipID column and foreign key
     $sqlCreateMembersTable = "CREATE TABLE IF NOT EXISTS Members (
         memberID INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         firstName VARCHAR(50) NOT NULL,
         lastName VARCHAR(50) NOT NULL,
         email VARCHAR(100) NOT NULL UNIQUE,
         memberPassword VARCHAR(255) NOT NULL,
-        registrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+        registrationDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        membershipType ENUM('Monthly', 'Quarterly', 'Annual') DEFAULT NULL
+    )";
 
     if ($conn->query($sqlCreateMembersTable) === FALSE) {
-        echo "Error creating Members table: " . $conn->error . "\n";
+        echo "<script>Error creating Members table: " . $conn->error . "\n</script>";
+    } else{
+        echo "<script>Members table created successfully.</script>";
     }
 
-    //Create Memberships tables if it doesn't exist
- 
-    $sqlCreateMembershipsTable = "CREATE TABLE IF NOT EXISTS Memberships (
-        membershipID INT AUTO_INCREMENT PRIMARY KEY,
-        memberID INT NOT NULL,
-        membershipType VARCHAR(50) NOT NULL,
-        membershipStartDate DATE NOT NULL,
-        membershipExpiryDate DATE NOT NULL,
-        membershipFee DECIMAL(10,2) NOT NULL,
-        paymentStatus VARCHAR(20) DEFAULT 'Inactive',
-        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (memberID) REFERENCES Members(memberID)
-    )";
-        
     // Create Activity table if it doesn't exist
     $sqlCreateActivitiesTable= "CREATE TABLE IF NOT EXISTS Activities (
         activityID INT AUTO_INCREMENT PRIMARY KEY,
@@ -42,7 +51,9 @@ if ($conn) {
         capacity INT DEFAULT 20)";
 
     if ($conn->query($sqlCreateActivitiesTable) === FALSE) {
-        echo "Error creating Activities table: " . $conn->error . "\n";
+        echo "<script>Error creating Activities table: " . $conn->error . "\n</script>";
+    } else{
+        echo "<script>Activities table created successfully.</script>";
     }
 
 
@@ -61,7 +72,9 @@ if ($conn) {
         UNIQUE KEY unique_member_activity (memberID, activityID) )";
 
     if ($conn->query($sqlCreateActivityBookingTable) === FALSE) {
-        echo "Error creating ActivityBookings table: " . $conn->error . "\n";
+        echo "<script>Error creating ActivityBookings table: " . $conn->error . "\n</script>";
+    } else{
+        echo "<script>ActivityBookings table created successfully.</script>";
     }
 
     // attendace table
@@ -75,9 +88,10 @@ if ($conn) {
         FOREIGN KEY (memberID) REFERENCES Members(memberID))";
 
     if ($conn->query($sqlCreateAttendaceTable) === FALSE) {
-        echo "Error creating Attendance table: " . $conn->error . "\n";
+        echo "<script>Error creating Attendance table: " . $conn->error . "\n</script>";
+    } else{
+        echo "<script>Attendance table created successfully.</script>";
     }
     
 }
 ?>
-

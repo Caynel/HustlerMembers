@@ -1,5 +1,4 @@
 <?php
-
     include 'dbConnect.php';
     include 'memberHandler.php';
 
@@ -12,7 +11,21 @@
     // Get member data if needed
     $memberData = getMemberData();
 
+    // Get membership pricing and details
+    $membershipPrices = [
+        'Monthly' => '1000 php',
+        'Quarterly' => '2500 php',
+        'Annual' => '8000 php'
+    ];
     
+    // Default values if no membership
+    $currentMembership = isset($memberData['membershipType']) ? $memberData['membershipType'] : 'None';
+    $membershipPrice = isset($memberData['membershipType']) ? $membershipPrices[$memberData['membershipType']] : 'Not subscribed';
+    
+    // Get registration date in readable format
+    $memberSince = isset($memberData['registrationDate']) ? 
+                  date('F Y', strtotime($memberData['registrationDate'])) : 
+                  'Unknown';
 ?>
 
 <!DOCTYPE html>
@@ -89,14 +102,27 @@
                 <div class="accBoxCont">
                     <div class="currentPlan">
                         <p><strong>Current Plan</strong></p>
-                        <div class="plan-type">Monthly Plan</div>
-                        <div class="price">1000 php</div>
-                        <p class="member-since">Member since Month Year</p>
+                        <?php if (isset($memberData['membershipType']) && $memberData['membershipType'] !== null): ?>
+                            <div class="plan-type"><?php echo htmlspecialchars($memberData['membershipType']); ?> Plan</div>
+                            <div class="price"><?php echo htmlspecialchars($membershipPrice); ?></div>
+                            <p class="member-since">Member since <?php echo htmlspecialchars($memberSince); ?></p>
+                        <?php else: ?>
+                            <div class="plan-type">No Active Membership</div>
+                            <div class="price">-</div>
+                            <p class="member-since">Member since <?php echo htmlspecialchars($memberSince); ?></p>
+                        <?php endif; ?>
                     </div>
                     <div class="membershipStatus">
-                        <button class="manageBtn">Cancel Membership</button>
-                        <br>
-                        <button class="manageBtn">Downgrade/Upgrade</button>
+                        <?php if (isset($memberData['membershipType']) && $memberData['membershipType'] !== null): ?>
+                            <form method="post" action="Membership.php">
+                                <input type="hidden" name="membershipType" value="None">
+                                <button class="manageBtn" type="submit">Cancel Membership</button>
+                            </form>
+                            <br>
+                            <a href="Membership.php" class="manageBtn">Change Plan</a>
+                        <?php else: ?>
+                            <a href="Membership.php" class="manageBtn">Get a Membership</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </section>
@@ -136,7 +162,6 @@
                     <li>hustlecoreAdmin@gmail.com</li>
                 </ul>
             </div>
-
         </footer>
     </body>
 </html>
