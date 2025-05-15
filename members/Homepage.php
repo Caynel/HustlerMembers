@@ -13,7 +13,7 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -50,6 +50,7 @@
                     <?php if (isLoggedIn()): ?>
                         <li><a href="session.php">Sessions</a></li>
                         <li><a href="enrolled.php">Enrolled Classes</a></li>
+                        <li><a href="Membership.php">Memberships</a></li>
                     <?php endif; ?>
                     <li><a href="AboutUs.php">About Us</a></li>
                 </ul>
@@ -83,9 +84,9 @@
                             <li>No. slots available</li>
                         </ul>
                         <?php if (isLoggedIn()): ?>
-                            <a class="enrollBtn leftAlign" href="classes.php">Enroll Now →</a>
+                            <a class="enrollBtn leftAlign" href="classes.php">Enroll Now &rarr;</a>
                         <?php else: ?>
-                            <a class="enrollBtn leftAlign" href="SignIn.php">Enroll Now →</a>
+                            <a class="enrollBtn leftAlign" href="SignIn.php">Enroll Now &rarr;</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -101,9 +102,9 @@
                             <li>No. slots available</li>
                         </ul>
                         <?php if (isLoggedIn()): ?>
-                            <a class="enrollBtn leftAlign" href="classes.php">Enroll Now →</a>
+                            <a class="enrollBtn leftAlign" href="classes.php">Enroll Now &rarr;</a>
                         <?php else: ?>
-                            <a class="enrollBtn leftAlign" href="SignIn.php">Enroll Now →</a>
+                            <a class="enrollBtn leftAlign" href="SignIn.php">Enroll Now &rarr;</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -119,9 +120,9 @@
                             <li>No. slots available</li>
                         </ul>
                          <?php if (isLoggedIn()): ?>
-                            <a class="enrollBtn leftAlign" href="classes.php">Enroll Now →</a>
+                            <a class="enrollBtn leftAlign" href="classes.php">Enroll Now &rarr;</a>
                         <?php else: ?>
-                            <a class="enrollBtn leftAlign" href="SignIn.php">Enroll Now →</a>
+                            <a class="enrollBtn leftAlign" href="SignIn.php">Enroll Now &rarr;</a>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -140,7 +141,7 @@
                     <img class="cardManageImg square" src="images/chart.png" alt="A picture of a chart.">
                     <div class="cardManageInfo">
                         <p>Check the classes you're enrolled in!</p>
-                        <a class="infoBtn" href="enrolled.php">→</a>
+                        <a class="infoBtn" href="enrolled.php">&rarr;</a>
                     </div>
                 </div>
 
@@ -149,7 +150,7 @@
                     <img class="cardManageImg circle" src="images/profile.png" alt="Default profile picture.">
                     <div class="cardManageInfo">
                         <p>Manage your account here!</p>
-                        <a class="infoBtn" href="Profile.php">→</a>
+                        <a class="infoBtn" href="Profile.php">&rarr;</a>
                     </div>
                 </div>
 
@@ -159,7 +160,7 @@
                     <img class="cardManageImg circle" src="images/gains.jpg" alt="Default gym icon.">
                     <div class="cardManageInfo">
                         <p>Learn more about HustleCore!</p>
-                        <a class="infoBtn" href="AboutUs.php">→</a>
+                        <a class="infoBtn" href="AboutUs.php">&rarr;</a>
                     </div>
                 </div>
                 <?php endif; ?>

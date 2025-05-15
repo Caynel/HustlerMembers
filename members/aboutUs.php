@@ -12,7 +12,7 @@
     handleLogout();
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,6 +46,7 @@
                     <?php if (isLoggedIn()): ?>
                         <li><a href="session.php">Sessions</a></li>
                         <li><a href="enrolled.php">Enrolled Classes</a></li>
+                        <li><a href="Membership.php">Memberships</a></li>
                     <?php endif; ?>
                     <li><a class="active" href="AboutUs.php">About Us</a></li>
                 </ul>

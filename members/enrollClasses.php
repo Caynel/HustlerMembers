@@ -39,6 +39,11 @@ $classes = [
     ]
 ];
 
+    // enrollClasses.php is only accessible through classes.php
+    if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'], 'classes.php') === false) {
+        header("Location: classes.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +82,7 @@ $classes = [
                 <?php if (isLoggedIn()): ?>
                     <li><a href="session.php">Sessions</a></li>
                     <li><a href="enrolled.php">Enrolled Classes</a></li>
-                    <li><a href="Membership.php">Memberships</a></li>
+                    <li><a href="membership.php">Memberships</a></li>
                 <?php endif; ?>
                 <li><a href="AboutUs.php">About Us</a></li>
             </ul>
@@ -89,31 +94,63 @@ $classes = [
 
     <!-- BREADCRUMBS -->
     <div class="breadcrumbs">
-        <span>&gt; Classes</span>
+        &gt; <a href="classes.php">Classes </a><span> &gt; Enroll Class</span> 
     </div>
     
     <!-- CONTENT -->
-    <div class="page-title">Explore Our Classes</div>
-    <div class="classes-layout">
-        <?php foreach ($classes as $i => $class): ?>
-            <div class="class-row<?php echo $i % 2 == 1 ? ' reverse' : ''; ?>">
-                <div class="class-img"><?php echo $class['img']; ?></div>
-                <div class="class-info">
-                    <div class="class-title"><?php echo htmlspecialchars($class['name']); ?></div>
-                    <div class="class-desc"><?php echo htmlspecialchars($class['desc']); ?></div>
-                    <?php if (isLoggedIn()): ?>
-                    <form method="post" action="enrollClasses.php" style="display:inline;">
-                        <input type="hidden" name="className" value="<?php echo htmlspecialchars($class['name']); ?>">
-                        <button type="submit">Enroll in Class &rarr;</button>
-                    </form>
-                    <?php else: ?>
-                        <a href="signin.php">Enroll in Class</a> 
-                    <?php endif; ?>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
+    <main class="mainCont">
+        <h2>Available Classes</h2>
+        <section class="enrollClassesCont">
+            <?php
+                // Query classes from Activities table
+                $classNameFilter = '';
+                if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['className'])) {
+                    $classNameFilter = $_POST['className'];
+                }
 
+                $sql = "SELECT activityID, activityName, instructor, schedule, duration, capacity FROM Activities WHERE activityType = 'class'";
+                if (!empty($classNameFilter)) {
+                    $safeClassName = $conn->real_escape_string($classNameFilter);
+                    $sql .= " AND activityName = '$safeClassName'";
+                }
+                $result = $conn->query($sql);
+
+                if ($result && $result->num_rows > 0): 
+            ?>
+
+            <!-- TABLE THAT DISPLAYS THE ACTIVITIES -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class Name</th>
+                        <th>Instructor</th>
+                        <th>Schedule</th>
+                        <th>Duration</th>
+                        <th>Capacity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['activityName']); ?></td>
+                            <td><?php echo htmlspecialchars($row['instructor']); ?></td>
+                            <td><?php echo date("F j, Y - h:i A", strtotime($row['schedule'])); ?></td>
+                            <td><?php echo (int)$row['duration']; ?> mins</td>
+                            <td><?php echo (int)$row['capacity']; ?></td>
+                            
+                            <td>
+                                <a href="?enroll=<?php echo $row['activityID']; ?>" class="enroll-btn" style="padding:6px 14px; background:#007bff; color:#fff; border-radius:4px; text-decoration:none;">Enroll</a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                </tbody>
+            </table>
+            <?php else: ?>
+                <p>No classes available at the moment.</p>
+            <?php endif; ?>
+        </section>
+    </main>
 
     <!-- FOOTER -->
     <footer>
