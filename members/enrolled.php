@@ -30,7 +30,8 @@ $enrollmentHistory = [
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Enrolled Classes - Fitness Portal</title>
     
     <link rel="stylesheet" href="projectStyles.css">
@@ -82,6 +83,7 @@ $enrollmentHistory = [
                 <?php if (isLoggedIn()): ?>
                     <li><a href="session.php">Sessions</a></li>
                     <li><a class="active" href="enrolled.php">Enrolled Classes</a></li>
+                    <li><a href="membership.php">Memberships</a></li>
                 <?php endif; ?>
                 <li><a href="AboutUs.php">About Us</a></li>
             </ul>

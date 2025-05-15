@@ -129,6 +129,20 @@ function handleLogout() {
     }
 }
 
-// Note: We don't automatically check login or load member data here
-// These functions should be called explicitly when needed in member pages
+
+// FOR ENROLLING IN CLASSES
+// Store enrolled class in session
+function enrollClass($className) {
+    $_SESSION['enrolled_class'] = $className;
+}
+
+// Remove enrolled class from session
+function cancelEnrolledClass() {
+    unset($_SESSION['enrolled_class']);
+}
+
+// Get enrolled class from session
+function getEnrolledClass() {
+    return isset($_SESSION['enrolled_class']) ? $_SESSION['enrolled_class'] : null;
+}
 ?>

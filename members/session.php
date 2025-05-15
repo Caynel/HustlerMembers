@@ -11,31 +11,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title><?php echo htmlspecialchars($className); ?> - Book Session</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="projectStyles.css">
 </head>
 <body>
     <header>
         <div class="upperNav">
             <a class="logo" href="Homepage.php"><img src="images/logo.jpg" alt="Logo" /></a>
             <div>
-                <a class="profileUpperNav" href="Profile.php">
-                    <img src="images/profile.png" alt="Default Icon">Profile
-                </a>
-
-                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                    <button type="submit" name="logout">Log out</button>
-                </form>
+                <?php if (isLoggedIn()): ?>
+                    <!-- PROFILE/ACC & LOGOUT (Only shows if logged in) -->
+                    <a class="profileUpperNav" href="Profile.php">
+                        <img src="images/profile.png" alt="Default Icon">Profile
+                    </a>
+                    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                        <button type="submit" name="logout">Log out</button>
+                    </form>
+                <?php else: ?>
+                    <!-- SIGN IN & OUT (Only show if not logged in) -->
+                    <a class="signBtns" href="signIn.php">Log In</a>
+                    <a class="signBtns" href="signUp.php">Sign Up</a>
+                <?php endif; ?>
             </div>
         </div>
         <nav>
             <ul>
-                <li><a href="homepage.php">Home</a></li>
+                <li><a href="Homepage.php">Home</a></li>
                 <li><a href="classes.php">Classes</a></li>
-                <li><a href="session.php" class="active">Sessions</a></li>
-                <li><a href="enrolled.php">Enrolled Classes</a></li>
-           
+                <?php if (isLoggedIn()): ?>
+                    <li><a class="active" href="session.php">Sessions</a></li>
+                    <li><a href="enrolled.php">Enrolled Classes</a></li>
+                    <li><a href="Membership.php">Memberships</a></li>
+                <?php endif; ?>
+                <li><a href="AboutUs.php">About Us</a></li>
             </ul>
         </nav>
     </header>
